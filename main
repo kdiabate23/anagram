@@ -1,6 +1,79 @@
+package com.tse.kareemdiabate;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Anagram{
- string s1,s2;
+public class AnagramKD {
+	public static void main(String [] args) {
+		
+		String s1,s2;  // storing string 1 in s1 and string 2 in s2
+		
+		// Create a Scanner object for keyboard input
+		Scanner keyboard = new Scanner(System.in);
+		
+		//Prompt user to enter two strings
+		System.out.print("Enter the first string: ");
+		
+		String word1 = keyboard.next();
+		
+       System.out.print("Enter the first string: ");
+		
+		String word2 = keyboard.next();
+		
+		/*
+		 * System.out.println(word1.length());
+		 * 
+		 * System.out.println(word2.length());
+		 */
+		
+		//Display result
+		if(isAnagram(word1,word2) == true) //check if word1 and word2 are anagram!
+		{
+			System.out.println(word1 + " and " + word2 + " are anagram.");
+		}else
+		{
+			System.out.println(word1 + " and " + word2 + " are not anagram.");
+		}
+	}
+	
+	/*******************************************************
+	 * isAnagram *
+	 * This Boolean function checks whether two words *
+	 * are anagrams. It returns true if the *
+	 * string are anagrams and false if they are not. *
+	 *******************************************************/
+	
+	public static boolean isAnagram(String s1, String s2)
+	{
+		s1 = s1.toLowerCase(); //Rewrite string s1 to all lower case 
+		s2 = s2.toLowerCase(); //Rewrite string s2 to all lower case 
+		
+		boolean status;  // storing the boolean in status
+		
+		//Converting the strings to char
+		char[] l1 = s1.toCharArray();
+		char [] l2 = s2.toCharArray();
+		
+		Arrays.sort(l1);
+		Arrays.sort(l2);
+		
+		if(s1.length() != s2.length())   //checking if the two words have the same if not there are not anagram;
+		{
+			status = false;
+		}
+		
+		else if(Arrays.equals(l1,l2))    //Checking if the both arrays contains the same letters
+	    {
+	    	status = true;               // status will be true if they do
+	    }else
+	    {
+	    	status = false;              // status will be false if they do not
+	    }
+		
+	    return status;                   // return status
+	}
+
 }
+
+
+
